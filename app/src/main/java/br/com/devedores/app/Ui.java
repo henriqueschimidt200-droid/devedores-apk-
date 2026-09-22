@@ -30,6 +30,7 @@ public class Ui {
     public static final int WHITE = Color.rgb(245, 247, 251);
     public static final int GOLD = Color.rgb(245, 190, 59);
     public static final int GOLD_DARK = Color.rgb(133, 93, 14);
+    public static final int DARK = Color.rgb(42, 48, 58);
     public static final int GREEN = Color.rgb(63, 207, 133);
     public static final int RED = Color.rgb(245, 94, 102);
     public static final int BLUE = Color.rgb(92, 159, 255);
