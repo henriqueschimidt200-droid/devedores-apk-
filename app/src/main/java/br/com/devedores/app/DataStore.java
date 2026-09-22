@@ -26,6 +26,6 @@ public class DataStore {
     public Models.Client client(String id){for(Models.Client c:clients)if(c.id.equals(id))return c;return null;}
     public Models.Loan loan(String id){for(Models.Client c:clients)for(Models.Loan l:c.loans)if(l.id.equals(id))return l;return null;}
     public void removeClient(String id){for(int i=clients.size()-1;i>=0;i--)if(clients.get(i).id.equals(id)){clients.remove(i);break;}save();}
-    public String exportJson(){try{JSONObject all=new JSONObject();JSONArray a=new JSONArray();for(Models.Client c:clients)a.put(c.toJson());JSONArray r=new JSONArray();for(Models.Reminder x:reminders)r.put(x.toJson());all.put("version",4);all.put("clients",a);all.put("reminders",r);return all.toString(2);}catch(Exception e){return "{}";}}
+    public String exportJson(){try{JSONObject all=new JSONObject();JSONArray a=new JSONArray();for(Models.Client c:clients)a.put(c.toJson());JSONArray r=new JSONArray();for(Models.Reminder x:reminders)r.put(x.toJson());all.put("version",5);all.put("clients",a);all.put("reminders",r);return all.toString(2);}catch(Exception e){return "{}";}}
     public boolean importJson(String s){try{JSONObject all=new JSONObject(s);JSONArray a=all.optJSONArray("clients");JSONArray r=all.optJSONArray("reminders");if(a==null)return false;clients.clear();reminders.clear();for(int i=0;i<a.length();i++)clients.add(Models.Client.fromJson(a.getJSONObject(i)));if(r!=null)for(int i=0;i<r.length();i++)reminders.add(Models.Reminder.fromJson(r.getJSONObject(i)));save();return true;}catch(Exception e){return false;}}
 }
