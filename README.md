@@ -1,13 +1,39 @@
-# Devedores 5.1
+# Devedores 5.2 — Android nativo
 
-Versão Android nativa com interface ampliada e correção de recorte nas barras do sistema.
+Versão profissional do Devedores, com foco em clientes, empréstimos, documentos, fotos e cobrança.
 
-## Melhorias da 5.1
-- Conteúdo respeita as barras de status, navegação e recortes de tela.
-- Interfaces de cadastro, cliente, contrato, calendário e relatórios podem rolar integralmente.
-- Campos, botões e títulos receberam mais espaço e tamanho para melhor leitura.
-- Evita que cabeçalhos, botões inferiores e ações fiquem escondidos atrás das barras do Android.
-- Mantém AndroidX e os alarmes/notificações nativos.
+## Imagens e documentos
+- Foto do cliente pela galeria ou câmera.
+- Várias imagens por cliente.
+- Galeria em grade dentro da pasta do cliente.
+- Abrir imagem em prévia.
+- Definir qualquer imagem como foto do cliente.
+- Mover arquivo entre pastas.
+- Renomear, compartilhar e excluir arquivos.
+- Pastas padrão: RG, CPF, Comprovante, Contrato, Fotos e Outros.
+- Pastas personalizadas.
+- Arquivos e fotos copiados para o armazenamento interno do app.
+- PDFs, textos e documentos de escritório podem ser armazenados.
 
-## GitHub Actions
-O projeto mantém `.github/workflows/android.yml` para gerar `app-debug.apk` em Artifacts.
+## Financeiro
+- Empréstimos com juros percentuais ou fixos.
+- Parcelas semanais, quinzenais e mensais.
+- Pagamentos parciais.
+- Saldo e progresso do contrato.
+- Reagendamento de parcelas.
+- Histórico de pagamentos.
+
+## Alertas
+- Alarmes nativos do Android.
+- Notificações.
+- Reprogramação após reinicialização do celular.
+- Permissão para alarmes exatos em Android compatível.
+
+## Dados
+- Salvamento automático local.
+- Backup e restauração em JSON.
+- Funcionamento sem internet.
+
+## GitHub
+Workflow: `.github/workflows/android.yml`
+Artifact: `Devedores-5.2-APK`

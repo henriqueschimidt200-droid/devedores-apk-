@@ -311,7 +311,7 @@ public class Ui {
     }
 
     public static ProgressBar progress(Context c, int progress, int max) {
-        ProgressBar p = new ProgressBar(c, null, android.android.R.attr.progressBarStyleHorizontal);
+        ProgressBar p = new ProgressBar(c, null, android.R.attr.progressBarStyleHorizontal);
         p.setMax(Math.max(1, max));
         p.setProgress(Math.max(0, Math.min(progress, max)));
         p.setIndeterminate(false);
@@ -342,7 +342,7 @@ public class Ui {
             d.setCircular(true);
             iv.setImageDrawable(d);
         } else {
-            iv.setImageResource(android.android.R.drawable.ic_menu_camera);
+            iv.setImageResource(android.R.drawable.ic_menu_camera);
         }
         iv.setBackground(bg(c, SURFACE_3, size / 2, BORDER));
         iv.setPadding(dp(c, 6), dp(c, 6), dp(c, 6), dp(c, 6));
