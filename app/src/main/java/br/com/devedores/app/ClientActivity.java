@@ -19,7 +19,7 @@ public class ClientActivity extends Activity {
     String money(double x){return String.format(Locale.getDefault(),"R$ %.2f",x);}
 
     void build(){
-        root=Ui.col(this); ScrollView sc=new ScrollView(this); sc.setFillViewport(true); sc.setVerticalScrollBarEnabled(false); sc.addView(root); setContentView(sc);
+        root=Ui.col(this); ScrollView sc=new ScrollView(this); sc.setFillViewport(true); sc.setVerticalScrollBarEnabled(false); sc.addView(root); setContentView(sc); Ui.applySystemBars(this, root);
 
         LinearLayout top=Ui.row(this);
         Button back=Ui.btnDark(this,"‹  Voltar"); back.setOnClickListener(v->finish()); top.addView(back,new LinearLayout.LayoutParams(Ui.dp(this,88),Ui.dp(this,44)));

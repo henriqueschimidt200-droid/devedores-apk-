@@ -29,7 +29,7 @@ public class AddLoanActivity extends Activity {
     void build() {
         LinearLayout p = Ui.col(this);
         ScrollView sc = new ScrollView(this);
-        sc.setFillViewport(true); sc.setVerticalScrollBarEnabled(false); sc.addView(p); setContentView(sc);
+        sc.setFillViewport(true); sc.setVerticalScrollBarEnabled(false); sc.addView(p); setContentView(sc); Ui.applySystemBars(this, p);
 
         LinearLayout top = Ui.row(this);
         Button back = Ui.btnDark(this, "‹  Voltar"); back.setOnClickListener(v -> finish());
@@ -57,7 +57,7 @@ public class AddLoanActivity extends Activity {
 
         LinearLayout interestRow = Ui.row(this);
         interestMode = new Spinner(this);
-        interestMode.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
+        interestMode.setAdapter(new ArrayAdapter<String>(this, android.android.R.layout.simple_spinner_dropdown_item,
                 new String[]{"Percentual (%)", "Valor fixo (R$)"}));
         interestRow.addView(interestMode, new LinearLayout.LayoutParams(0, Ui.dp(this, 50), 0.45f)); Ui.gap(this, interestRow, 7);
         interestRow.addView(interest, new LinearLayout.LayoutParams(0, Ui.dp(this, 56), 0.55f));
@@ -66,7 +66,7 @@ public class AddLoanActivity extends Activity {
         LinearLayout row = Ui.row(this);
         installments = Ui.field(this, "Parcelas");
         freq = new Spinner(this);
-        freq.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,
+        freq.setAdapter(new ArrayAdapter<String>(this, android.android.R.layout.simple_spinner_dropdown_item,
                 new String[]{"Semanal", "Quinzenal", "Mensal"}));
         row.addView(installments, new LinearLayout.LayoutParams(0, Ui.dp(this, 56), 0.42f)); Ui.gap(this, row, 7);
         row.addView(freq, new LinearLayout.LayoutParams(0, Ui.dp(this, 50), 0.58f));

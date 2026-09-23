@@ -34,7 +34,7 @@ public class AddClientActivity extends Activity {
         LinearLayout profile=Ui.heroCard(this,Ui.GOLD);
         LinearLayout pr=Ui.row(this);
         photoPreview=new ImageView(this); photoPreview.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        photoPreview.setBackgroundColor(Ui.SURFACE_3); photoPreview.setImageResource(android.R.drawable.ic_menu_camera);
+        photoPreview.setBackgroundColor(Ui.SURFACE_3); photoPreview.setImageResource(android.android.R.drawable.ic_menu_camera);
         pr.addView(photoPreview,new LinearLayout.LayoutParams(Ui.dp(this,88),Ui.dp(this,88)));
         LinearLayout pc=Ui.col(this); pc.setPadding(Ui.dp(this,14),0,0,0);
         pc.addView(Ui.eyebrow(this,"FOTO DO CLIENTE"));
@@ -61,7 +61,7 @@ public class AddClientActivity extends Activity {
         p.addView(save,new LinearLayout.LayoutParams(-1,Ui.dp(this,56)));
         Ui.gap(this,p,8);
         Button cancel=Ui.btnGhost(this,"Cancelar"); cancel.setOnClickListener(v->finish()); p.addView(cancel);
-        setContentView(p);
+        setContentView(sc); Ui.applySystemBars(this, p);
     }
 
     void pickPhoto(){

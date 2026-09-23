@@ -15,8 +15,13 @@ import android.widget.ProgressBar;
 import android.widget.Space;
 import android.widget.TextView;
 
+import android.app.Activity;
+
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import java.io.File;
 
@@ -92,7 +97,37 @@ public class Ui {
     }
 
     public static TextView sectionTitle(Context c, String s) {
-        return title(c, s, 18);
+        return title(c, s, 20);
+    }
+
+    /**
+     * Keeps the UI away from status/navigation bars on Android 15+ while still
+     * allowing the app to use the full display. This prevents headers/buttons
+     * from being clipped on phones with gesture navigation or display cutouts.
+     */
+    public static void applySystemBars(Activity activity, View content) {
+        WindowCompat.setDecorFitsSystemWindows(activity.getWindow(), false);
+        activity.getWindow().setStatusBarColor(Color.TRANSPARENT);
+        activity.getWindow().setNavigationBarColor(Color.TRANSPARENT);
+        try {
+            WindowCompat.getInsetsController(activity.getWindow(), activity.getWindow().getDecorView())
+                    .setAppearanceLightStatusBars(false);
+            WindowCompat.getInsetsController(activity.getWindow(), activity.getWindow().getDecorView())
+                    .setAppearanceLightNavigationBars(false);
+        } catch (Exception ignored) {}
+
+        final int baseLeft = content.getPaddingLeft();
+        final int baseTop = content.getPaddingTop();
+        final int baseRight = content.getPaddingRight();
+        final int baseBottom = content.getPaddingBottom();
+        ViewCompat.setOnApplyWindowInsetsListener(content, (v, insets) -> {
+            androidx.core.graphics.Insets bars = insets.getInsets(
+                    WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.displayCutout());
+            v.setPadding(baseLeft + bars.left, baseTop + bars.top,
+                    baseRight + bars.right, baseBottom + bars.bottom);
+            return insets;
+        });
+        ViewCompat.requestApplyInsets(content);
     }
 
     public static LinearLayout sectionHeader(Context c, String title, String action, View.OnClickListener click) {
@@ -158,10 +193,12 @@ public class Ui {
         b.setText(s);
         b.setAllCaps(false);
         b.setGravity(Gravity.CENTER);
-        b.setMinHeight(dp(c, 44));
+        b.setMinHeight(dp(c, 48));
         b.setMinWidth(0);
         b.setStateListAnimator(null);
-        b.setPadding(dp(c, 13), 0, dp(c, 13), 0);
+        b.setPadding(dp(c, 15), 0, dp(c, 15), 0);
+        b.setMaxLines(2);
+        b.setEllipsize(null);
         return b;
     }
 
@@ -170,10 +207,10 @@ public class Ui {
         e.setHint(hint);
         e.setTextColor(WHITE);
         e.setHintTextColor(Color.rgb(104, 115, 132));
-        e.setTextSize(15);
+        e.setTextSize(16);
         e.setSingleLine(false);
         e.setIncludeFontPadding(false);
-        e.setPadding(dp(c, 14), dp(c, 10), dp(c, 14), dp(c, 10));
+        e.setPadding(dp(c, 15), dp(c, 12), dp(c, 15), dp(c, 12));
         e.setBackground(bg(c, SURFACE_2, 14, BORDER));
         return e;
     }
@@ -189,7 +226,7 @@ public class Ui {
     public static LinearLayout col(Context c) {
         LinearLayout l = new LinearLayout(c);
         l.setOrientation(LinearLayout.VERTICAL);
-        l.setPadding(dp(c, 18), dp(c, 14), dp(c, 18), dp(c, 30));
+        l.setPadding(dp(c, 20), dp(c, 18), dp(c, 20), dp(c, 42));
         l.setBackgroundColor(BG);
         return l;
     }
@@ -203,7 +240,7 @@ public class Ui {
 
     public static LinearLayout card(Context c) {
         LinearLayout l = col(c);
-        l.setPadding(dp(c, 16), dp(c, 15), dp(c, 16), dp(c, 15));
+        l.setPadding(dp(c, 18), dp(c, 18), dp(c, 18), dp(c, 18));
         l.setBackground(bg(c, SURFACE, 18, BORDER));
         l.setElevation(dp(c, 2));
         return l;
@@ -274,7 +311,7 @@ public class Ui {
     }
 
     public static ProgressBar progress(Context c, int progress, int max) {
-        ProgressBar p = new ProgressBar(c, null, android.R.attr.progressBarStyleHorizontal);
+        ProgressBar p = new ProgressBar(c, null, android.android.R.attr.progressBarStyleHorizontal);
         p.setMax(Math.max(1, max));
         p.setProgress(Math.max(0, Math.min(progress, max)));
         p.setIndeterminate(false);
@@ -305,7 +342,7 @@ public class Ui {
             d.setCircular(true);
             iv.setImageDrawable(d);
         } else {
-            iv.setImageResource(android.R.drawable.ic_menu_camera);
+            iv.setImageResource(android.android.R.drawable.ic_menu_camera);
         }
         iv.setBackground(bg(c, SURFACE_3, size / 2, BORDER));
         iv.setPadding(dp(c, 6), dp(c, 6), dp(c, 6), dp(c, 6));

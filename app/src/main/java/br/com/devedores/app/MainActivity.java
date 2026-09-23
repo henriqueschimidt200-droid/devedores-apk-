@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
 
     @Override protected void onResume() { super.onResume(); if(ds!=null){ ds.load(); if(root!=null) render(); AlarmScheduler.rescheduleAll(this); } }
 
-    void build() { root = Ui.col(this); ScrollView sc = new ScrollView(this); sc.setFillViewport(true); sc.setVerticalScrollBarEnabled(false); sc.addView(root); setContentView(sc); }
+    void build() { root = Ui.col(this); ScrollView sc = new ScrollView(this); sc.setFillViewport(true); sc.setVerticalScrollBarEnabled(false); sc.addView(root); setContentView(sc); Ui.applySystemBars(this, root); }
 
     String money(double x) { return String.format(Locale.getDefault(), "R$ %.2f", x); }
 

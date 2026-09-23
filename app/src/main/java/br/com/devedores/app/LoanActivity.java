@@ -16,7 +16,7 @@ public class LoanActivity extends Activity {
     String date(long t){return new SimpleDateFormat("dd/MM/yyyy 'às' HH:mm",new Locale("pt","BR")).format(new Date(t));}
 
     void build(){
-        root=Ui.col(this);ScrollView sc=new ScrollView(this);sc.setFillViewport(true);sc.setVerticalScrollBarEnabled(false);sc.addView(root);setContentView(sc);
+        root=Ui.col(this);ScrollView sc=new ScrollView(this);sc.setFillViewport(true);sc.setVerticalScrollBarEnabled(false);sc.addView(root);setContentView(sc); Ui.applySystemBars(this, root);
         LinearLayout top=Ui.row(this);Button back=Ui.btnDark(this,"‹  Voltar");back.setOnClickListener(v->finish());top.addView(back,new LinearLayout.LayoutParams(Ui.dp(this,88),Ui.dp(this,44)));LinearLayout tt=Ui.col(this);tt.setPadding(Ui.dp(this,10),0,0,0);tt.addView(Ui.title(this,loan.title,21));tt.addView(Ui.label(this,"Contrato • "+client.name));top.addView(tt,new LinearLayout.LayoutParams(0,Ui.dp(this,52),1));Button more=Ui.btnDark(this,"•••");more.setOnClickListener(v->loanMenu());top.addView(more,new LinearLayout.LayoutParams(Ui.dp(this,54),Ui.dp(this,44)));root.addView(top);Ui.gap(this,root,14);
 
         double pct=loan.total<=0?0:loan.paid()/loan.total*100d;boolean quitado=loan.balance()<=0.005;int overdue=0;double overdueVal=0;for(int i=0;i<loan.installments;i++)if(!loan.installmentPaid(i)&&loan.dueAt(i)<System.currentTimeMillis()){overdue++;overdueVal+=Math.max(0,loan.installmentAmount-loan.paidForInstallment(i));}

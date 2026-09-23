@@ -26,7 +26,7 @@ public class ReportsActivity extends Activity {
 
     void build() {
         root = Ui.col(this);
-        ScrollView sc = new ScrollView(this); sc.setFillViewport(true); sc.setVerticalScrollBarEnabled(false); sc.addView(root); setContentView(sc);
+        ScrollView sc = new ScrollView(this); sc.setFillViewport(true); sc.setVerticalScrollBarEnabled(false); sc.addView(root); setContentView(sc); Ui.applySystemBars(this, root);
 
         LinearLayout top = Ui.row(this);
         Button back = Ui.btnDark(this, "‹  Voltar"); back.setOnClickListener(v -> finish());

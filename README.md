@@ -1,27 +1,13 @@
-# Devedores 5.0 — Android Nativo
+# Devedores 5.1
 
-Aplicativo Android nativo para gestão profissional de clientes, empréstimos, parcelas, documentos, imagens, pagamentos e lembretes.
+Versão Android nativa com interface ampliada e correção de recorte nas barras do sistema.
 
-## Novidades da versão 5.0
+## Melhorias da 5.1
+- Conteúdo respeita as barras de status, navegação e recortes de tela.
+- Interfaces de cadastro, cliente, contrato, calendário e relatórios podem rolar integralmente.
+- Campos, botões e títulos receberam mais espaço e tamanho para melhor leitura.
+- Evita que cabeçalhos, botões inferiores e ações fiquem escondidos atrás das barras do Android.
+- Mantém AndroidX e os alarmes/notificações nativos.
 
-- Dashboard redesenhado com carteira, saldo em aberto, recebido, atrasos e próximos vencimentos.
-- Área de pendências críticas com acesso rápido ao contrato atrasado.
-- Relatórios com recebimentos dos últimos 6 meses e clientes com maior saldo.
-- Interface visual refinada: cards, hierarquia tipográfica, estados, progresso e ações rápidas.
-- Cadastro de empréstimo com juros **percentuais ou valor fixo**.
-- Cronograma de parcelas mostrado antes de salvar o contrato.
-- Primeiro vencimento com **data e horário configuráveis**.
-- Pagamentos parciais com observação.
-- Pastas por cliente com RG, CPF, comprovantes, contratos, Fotos e Outros.
-- Criação de pastas personalizadas.
-- Galeria para adicionar **uma ou várias imagens** ao cliente.
-- Fotos e documentos copiados para o armazenamento interno do aplicativo.
-- Calendário de vencimentos.
-- Alarmes nativos e reprogramação após reinício do aparelho.
-- Backup e restauração em JSON.
-- Dados persistentes no aparelho.
-- AndroidX ativado e workflow GitHub Actions incluído.
-
-## Build
-
-Use `.github/workflows/android.yml` para gerar o APK pelo GitHub Actions.
+## GitHub Actions
+O projeto mantém `.github/workflows/android.yml` para gerar `app-debug.apk` em Artifacts.
